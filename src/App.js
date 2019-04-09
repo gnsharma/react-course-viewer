@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from "react-router-dom";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -22,10 +22,12 @@ class App extends Component {
             }> About </NavLink>
           </nav>
 
-          <Route path="/" exact component={Home} />
-          <Route path="/courses" exact component={Courses} />
-          <Route path="/about" exact component={About} />
-          <Route path="*" handler={NotFound} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/courses" exact component={Courses} />
+            <Route path="/about" exact component={About} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </Router>
     );
